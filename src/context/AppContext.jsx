@@ -13,7 +13,7 @@ export const AppContextProvider = ({ children }) => {
 
     const initialUser = {
       user: null,
-      isAuth: false,
+      isAuth: true,
     };
 
     const initialProducts = {
