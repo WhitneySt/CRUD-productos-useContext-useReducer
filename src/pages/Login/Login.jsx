@@ -10,11 +10,14 @@ import * as Yup from "yup";
 import { getUserByEmailAndPassword } from "../../services/userServices";
 import { useAppContext } from "../../context/AppContext";
 import { useNavigate } from "react-router-dom";
+import useSessionStorage from "../../hooks/useSessionStorage";
 
 export default function Login() {
   const {
     user: { userDispatch },
-    } = useAppContext();
+  } = useAppContext();
+  
+  const { saveInfoIntoStorage } = useSessionStorage("user");
     
     const navigate = useNavigate()
   
@@ -32,7 +35,8 @@ export default function Login() {
     onSubmit: async (values) => {
       const user = await getUserByEmailAndPassword(values);
       if (user) {
-          console.log(user);
+        console.log(user);
+        saveInfoIntoStorage(user)
           userDispatch({
               type: "LOGIN",
               payload: user

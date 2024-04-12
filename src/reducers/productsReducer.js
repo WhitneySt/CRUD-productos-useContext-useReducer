@@ -19,6 +19,17 @@ const productsReducer = (state, action) => {
                 ...state,
                 products: deletedProduct
             }
+        case "FILLCATEGORIES":
+            return {
+                ...state,
+                categories: action.payload
+            }
+        case "FILTERPRODUCTS":
+            return {
+              ...state,
+              products: action.payload.products,
+              isActiveFilter: action.payload.isActiveFilter,
+            };
         default:
             return state;
     }
