@@ -1,14 +1,15 @@
-import React from 'react'
-import NavigationBar from '../NavigationBar/NavigationBar'
-import { Outlet } from 'react-router-dom'
+import React from "react";
+import NavigationBar from "../NavigationBar/NavigationBar";
+import { Outlet } from "react-router-dom";
+import { Box } from "@mui/material";
 
 const Layout = () => {
   return (
-      <div>
-          <NavigationBar />
-          <Outlet/>
-    </div>
-  )
-}
+    <Box>
+      <NavigationBar />
+      <Outlet />
+    </Box>
+  );
+};
 
-export default Layout
+export default Layout;

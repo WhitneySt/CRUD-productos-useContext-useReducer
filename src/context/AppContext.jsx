@@ -13,12 +13,14 @@ export const AppContextProvider = ({ children }) => {
 
     const initialUser = {
       user: null,
-      isAuth: true,
+      isAuth: false,
     };
 
     const initialProducts = {
-        products:[]
-    }
+      products: [],
+      categories: [],
+      activeFilter: false,
+    };
 
     const [user, userDispatch] = useReducer(userReducer, initialUser);
     const [products, productsDispatch] = useReducer(productsReducer, initialProducts);

@@ -10,14 +10,16 @@ import * as Yup from "yup";
 import { getUserByEmailAndPassword } from "../../services/userServices";
 import { useAppContext } from "../../context/AppContext";
 import { useNavigate } from "react-router-dom";
+import useSessionStorage from "../../hooks/useSessionStorage";
 
 export default function Login() {
   const {
     user: { userDispatch },
-    } = useAppContext();
-    
-    const navigate = useNavigate()
-  
+  } = useAppContext();
+
+  const navigate = useNavigate();
+  const { saveInfoInStorage } = useSessionStorage("user");
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -32,15 +34,16 @@ export default function Login() {
     onSubmit: async (values) => {
       const user = await getUserByEmailAndPassword(values);
       if (user) {
-          console.log(user);
-          userDispatch({
-              type: "LOGIN",
-              payload: user
-          });
-          alert("Bienvenid@ ", user.email)
-          navigate("/");
+        console.log(user);
+        saveInfoInStorage(user);
+        userDispatch({
+          type: "LOGIN",
+          payload: user,
+        });
+        alert("Bienvenid@ ", user.email);
+        navigate("/");
       } else {
-          alert("Por favor verifique sus credenciales");
+        alert("Por favor verifique sus credenciales");
       }
     },
   });
