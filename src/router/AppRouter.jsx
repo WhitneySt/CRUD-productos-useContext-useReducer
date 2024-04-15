@@ -16,7 +16,6 @@ const AppRouter = () => {
   } = useAppContext();
 
   useEffect(() => {
-    console.log(user)
     if (!user.user && storagedData) {
       userDispatch({
         type: "LOGIN",

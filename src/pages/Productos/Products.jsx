@@ -55,6 +55,13 @@ const Products = () => {
           <Cards
             key={item.id}
             product={item}
+            colorFont={
+              categoriesWithColor.length
+                ? categoriesWithColor.find(
+                    (element) => item.category === element.category
+                  ).colorFont
+                : ""
+            }
             colorCategory={
               categoriesWithColor.find(
                 (element) => item.category === element.category

@@ -7,7 +7,9 @@ const Layout = () => {
   return (
     <Box>
       <NavigationBar />
-      <Outlet />
+      <main style={{marginTop: '70px'}}>
+        <Outlet />
+      </main>
     </Box>
   );
 };

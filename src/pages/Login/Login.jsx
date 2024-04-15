@@ -40,7 +40,7 @@ export default function Login() {
           type: "LOGIN",
           payload: user,
         });
-        alert("Bienvenid@ ", user.email);
+        alert("Bienvenid@ "+ user.name);
         navigate("/");
       } else {
         alert("Por favor verifique sus credenciales");

@@ -7,9 +7,8 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { useAppContext } from "../../context/AppContext";
 
-const Cards = memo(({ product = {}, colorCategory = "" }) => {
+const Cards = memo(({ product = {}, colorCategory = "", colorFont = "" }) => {
   return (
     <Card sx={{ width: 350 }}>
       <CardMedia
@@ -33,13 +32,14 @@ const Cards = memo(({ product = {}, colorCategory = "" }) => {
               sx={{
                 textTransform: "capitalize",
                 backgroundColor: colorCategory ? colorCategory : "#937de4",
+                color: colorFont ? colorFont : "#2a2a2a",
               }}
             />
             <Rating
               defaultValue={product?.rating}
               size="small"
               readOnly
-              precision={0.5}
+              precision={0.1}
             />
           </Stack>
         </Stack>
